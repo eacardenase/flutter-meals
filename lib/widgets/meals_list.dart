@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:meals/models/meal.dart';
+import 'package:meals/widgets/meal_item.dart';
 
 class MealsList extends StatelessWidget {
   const MealsList({
@@ -14,11 +15,8 @@ class MealsList extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       itemCount: meals.length,
-      itemBuilder: (context, index) => Text(
-        meals[index].title,
-        style: const TextStyle(
-          color: Colors.grey,
-        ),
+      itemBuilder: (context, index) => MealItem(
+        meal: meals[index],
       ),
     );
   }
