@@ -16,6 +16,9 @@ class MealsList extends StatelessWidget {
       itemCount: meals.length,
       itemBuilder: (context, index) => Text(
         meals[index].title,
+        style: const TextStyle(
+          color: Colors.grey,
+        ),
       ),
     );
   }
