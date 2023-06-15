@@ -5,10 +5,11 @@ import 'package:uuid/uuid.dart';
 const uuid = Uuid();
 
 class Category {
-  Category({
+  const Category({
+    required this.id,
     required this.title,
     this.color = Colors.orange,
-  }) : id = uuid.v4();
+  });
 
   final String id;
   final String title;

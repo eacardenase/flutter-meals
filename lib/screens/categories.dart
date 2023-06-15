@@ -31,7 +31,7 @@ class CategoriesScreen extends StatelessWidget {
         //   for (final category in availableCategoriess)
         //     CategoryGrid(category: category)
         // ],
-        children: availableCategoriess
+        children: availableCategories
             .map((category) => CategoryGrid(category: category))
             .toList(),
       ),
