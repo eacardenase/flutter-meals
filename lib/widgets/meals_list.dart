@@ -8,9 +8,11 @@ class MealsList extends StatelessWidget {
   const MealsList({
     super.key,
     required this.meals,
+    required this.onToggleFavorite,
   });
 
   final List<Meal> meals;
+  final void Function(Meal) onToggleFavorite;
 
   void _selectMeal(BuildContext context, Meal meal) {
     // alternative of Nativator.push(context, route)
@@ -18,6 +20,7 @@ class MealsList extends StatelessWidget {
       MaterialPageRoute(
         builder: (context) => MealDetailsScreen(
           meal: meal,
+          onToggleFavorite: onToggleFavorite,
         ),
       ),
     );
