@@ -59,15 +59,17 @@ class _TabsScreenState extends State<TabsScreen> {
     _showInfoMessage(message);
   }
 
-  void _setScreen(String identifier) {
+  void _setScreen(String identifier) async {
     Navigator.pop(context);
 
     if (identifier == 'filters') {
-      Navigator.of(context).push(
+      final result = await Navigator.of(context).push<Map<Filter, bool>>(
         MaterialPageRoute(
           builder: (context) => const FiltersScreen(),
         ),
       );
+
+      print(result);
     }
   }
 

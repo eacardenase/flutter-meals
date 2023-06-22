@@ -2,6 +2,13 @@ import 'package:flutter/material.dart';
 
 import 'package:meals/widgets/filter_switch_list_tile.dart';
 
+enum Filter {
+  gluttenFree,
+  lactoseFree,
+  vegetarian,
+  vegan,
+}
+
 class FiltersScreen extends StatefulWidget {
   const FiltersScreen({super.key});
 
@@ -31,39 +38,53 @@ class _FiltersScreenState extends State<FiltersScreen> {
     setState(() => _veganFilterSet = isChecked);
   }
 
+  Future<bool> _onPop() async {
+    Navigator.of(context).pop({
+      Filter.gluttenFree: _glutenFreeFilterSet,
+      Filter.lactoseFree: _lactoseFreeFilterSet,
+      Filter.vegetarian: _vegetarianFilterSet,
+      Filter.vegan: _veganFilterSet,
+    });
+
+    return false;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Your Filters'),
       ),
-      body: Column(
-        children: [
-          FilterSwitchListTile(
-            title: 'Gluten-free',
-            subtitle: 'Only include gluten-free meals.',
-            isFilterSet: _glutenFreeFilterSet,
-            onSwitchToggle: _toggleGlutenFreeFilter,
-          ),
-          FilterSwitchListTile(
-            title: 'Lactose-free',
-            subtitle: 'Only include lactose-free meals.',
-            isFilterSet: _lactoseFreeFilterSet,
-            onSwitchToggle: _toggleLactoseFreeFilter,
-          ),
-          FilterSwitchListTile(
-            title: 'Vegetarian',
-            subtitle: 'Only include vegetarian meals.',
-            isFilterSet: _vegetarianFilterSet,
-            onSwitchToggle: _toggleVegetarianFilter,
-          ),
-          FilterSwitchListTile(
-            title: 'Vegan',
-            subtitle: 'Only include vegan meals.',
-            isFilterSet: _veganFilterSet,
-            onSwitchToggle: _toggleVeganFilter,
-          ),
-        ],
+      body: WillPopScope(
+        onWillPop: _onPop,
+        child: Column(
+          children: [
+            FilterSwitchListTile(
+              title: 'Gluten-free',
+              subtitle: 'Only include gluten-free meals.',
+              isFilterSet: _glutenFreeFilterSet,
+              onSwitchToggle: _toggleGlutenFreeFilter,
+            ),
+            FilterSwitchListTile(
+              title: 'Lactose-free',
+              subtitle: 'Only include lactose-free meals.',
+              isFilterSet: _lactoseFreeFilterSet,
+              onSwitchToggle: _toggleLactoseFreeFilter,
+            ),
+            FilterSwitchListTile(
+              title: 'Vegetarian',
+              subtitle: 'Only include vegetarian meals.',
+              isFilterSet: _vegetarianFilterSet,
+              onSwitchToggle: _toggleVegetarianFilter,
+            ),
+            FilterSwitchListTile(
+              title: 'Vegan',
+              subtitle: 'Only include vegan meals.',
+              isFilterSet: _veganFilterSet,
+              onSwitchToggle: _toggleVeganFilter,
+            ),
+          ],
+        ),
       ),
     );
   }
