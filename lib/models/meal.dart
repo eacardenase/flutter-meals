@@ -1,7 +1,3 @@
-import 'package:uuid/uuid.dart';
-
-const uuid = Uuid();
-
 enum Complexity {
   simple,
   challenging,

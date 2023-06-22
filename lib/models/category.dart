@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:uuid/uuid.dart';
-
-const uuid = Uuid();
-
 class Category {
   const Category({
     required this.id,
