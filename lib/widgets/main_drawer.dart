@@ -5,7 +5,10 @@ import 'package:meals/widgets/main_drawer_list_tile.dart';
 class MainDrawer extends StatelessWidget {
   const MainDrawer({
     super.key,
+    required this.onSelectScreen,
   });
+
+  final void Function(String) onSelectScreen;
 
   @override
   Widget build(BuildContext context) {
@@ -53,12 +56,12 @@ class MainDrawer extends StatelessWidget {
           MainDrawerListTile(
             tileTitle: 'Meals',
             icon: Icons.restaurant,
-            onTileSelected: () {},
+            onTileSelected: () => onSelectScreen('meals'),
           ),
           MainDrawerListTile(
             tileTitle: 'Filters',
             icon: Icons.settings,
-            onTileSelected: () {},
+            onTileSelected: () => onSelectScreen('filters'),
           ),
         ],
       ),
